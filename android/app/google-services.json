@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "163349080537",
+    "project_id": "unilock-87033",
+    "storage_bucket": "unilock-87033.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163349080537:android:c05092da0aa9eb02bf51c8",
+        "android_client_info": {
+          "package_name": "com.example.flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwHNjlZn6Bc_PJIWb1TyOLHUj_hvXdRIc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163349080537:android:43c4610063cf95f5bf51c8",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwHNjlZn6Bc_PJIWb1TyOLHUj_hvXdRIc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163349080537:android:d07db97efaedf3dcbf51c8",
+        "android_client_info": {
+          "package_name": "com.example.unilock"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwHNjlZn6Bc_PJIWb1TyOLHUj_hvXdRIc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
