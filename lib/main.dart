@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -24,7 +31,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  FirebaseFirestore db = FirebaseFirestore.instance;
   final ScrollController _scrollController = ScrollController();
+  String compartment1Status = "AVAILABLE";
+
+  @override
+  void initState() {
+    final docRef = db.collection("compartments").doc("1");
+    docRef.snapshots().listen(
+          (event) => setState(() {
+            if (event.data()!.containsKey("status")) {
+              compartment1Status =
+                  event.data()!['status'].toUpperCase() as String;
+            }
+          }),
+          onError: (error) => {print("Listen failed: $error")},
+        );
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -213,9 +238,9 @@ class _MyHomePageState extends State<MyHomePage> {
                               width: 3.0, // Border width
                             ),
                           ),
-                          child: const Text(
-                            "AVAILABLE",
-                            style: TextStyle(
+                          child: Text(
+                            compartment1Status,
+                            style: const TextStyle(
                               fontFamily: "Inter",
                               fontWeight: FontWeight.bold,
                               fontStyle: FontStyle.italic,
