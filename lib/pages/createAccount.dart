@@ -17,19 +17,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Demo',
-      home: MyHomePage(),
+      home: CreateAccount(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class CreateAccount extends StatefulWidget {
+  const CreateAccount({super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _CreateAccountState createState() => _CreateAccountState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _CreateAccountState extends State<CreateAccount> {
   final ScrollController _scrollController = ScrollController();
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/dashboard.dart';
 
 class loginButton extends StatefulWidget {
   const loginButton({super.key});
@@ -32,7 +33,13 @@ class _loginButtonState extends State<loginButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: _submitForm,
+      onPressed: () {
+        // Navigate to SecondPage when the button is pressed
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Dashboard()),
+        );
+      },
       child: Text(
         "Log in",
         style: TextStyle(

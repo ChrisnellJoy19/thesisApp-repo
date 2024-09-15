@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/login.dart';
 
 class signupBoxButton extends StatefulWidget {
   const signupBoxButton({super.key});
@@ -12,7 +13,11 @@ class _signupBoxButtonState extends State<signupBoxButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        // Add functionality for sign-up button
+        // Navigate to SecondPage when the button is pressed
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Login()),
+        );
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color.fromRGBO(103, 12, 13, 1.000),

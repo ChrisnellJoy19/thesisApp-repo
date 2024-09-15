@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/forgotPassword.dart';
 
 class forgotPassButton extends StatefulWidget {
   const forgotPassButton({super.key});
@@ -12,7 +13,11 @@ class _forgotPassButtonState extends State<forgotPassButton> {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        // Handle Forgot Password
+        // Navigate to SecondPage when the button is pressed
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ForgotPassword()),
+        );
       },
       child: Text(
         'Forgot Password?',

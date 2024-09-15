@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/createAccount.dart';
 
 class signupButton extends StatefulWidget {
   const signupButton({super.key});
@@ -11,7 +12,13 @@ class _signupButtonState extends State<signupButton> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: () {
+        // Navigate to SecondPage when the button is pressed
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => CreateAccount()),
+        );
+      },
       child: Text(
         'Sign-up!',
         style: TextStyle(
