@@ -16,19 +16,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Demo',
-      home: MyHomePage(),
+      home: FPUpdate(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class FPUpdate extends StatefulWidget {
+  const FPUpdate({super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _FPUpdateState createState() => _FPUpdateState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _FPUpdateState extends State<FPUpdate> {
   void _goBack() {
     Navigator.pop(context);
   }

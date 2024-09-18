@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/fP_update.dart';
 
 class verifyButton extends StatefulWidget {
   const verifyButton({super.key});
@@ -12,7 +13,11 @@ class _verifyButtonState extends State<verifyButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        // Add functionality for phone number button
+        // Navigate to SecondPage when the button is pressed
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => FPUpdate()),
+        );
       },
       child: Text(
         "Verify",

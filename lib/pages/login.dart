@@ -44,16 +44,18 @@ class _LoginState extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  width: 150,
+                  width: 200,
                   height: 200,
-                  child: Image.asset('assets/images/login_icon.png'),
+                  child: Image.asset('assets/images/marsu logo.png'),
                 ),
-                const SizedBox(height: 16),
+                // const SizedBox(height: 1),
                 const Text(
-                  "HELLO",
+                  "UniLOCK",
                   style: TextStyle(
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold,
                     fontFamily: "Inter",
-                    fontSize: 50,
+                    fontSize: 40,
                     color: Color.fromRGBO(103, 12, 13, 1.000),
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/login.dart';
 
 class proceedLoginButton extends StatefulWidget {
   const proceedLoginButton({super.key});
@@ -12,7 +13,11 @@ class _proceedLoginButtonState extends State<proceedLoginButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        // Add functionality for phone number button
+        // Navigate to SecondPage when the button is pressed
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Login()),
+        );
       },
       child: Text(
         "Proceed to Log in",

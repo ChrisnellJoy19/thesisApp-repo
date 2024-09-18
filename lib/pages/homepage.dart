@@ -34,12 +34,12 @@ class _MyHomePageState extends State<MyHomePage> {
           width: 300, // Set the desired width
           height: 300, // Set the desired height
           child: Image(
-            image: AssetImage('assets/images/marsu_logo.jpg'),
+            image: AssetImage('assets/images/marsu logo.png'),
             fit: BoxFit.cover,
           ),
         ),
         Text(
-          "UniLock",
+          "UniLOCK",
           style: TextStyle(
             fontStyle: FontStyle.italic,
             fontWeight: FontWeight.bold,

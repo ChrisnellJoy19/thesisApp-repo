@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/fP_phoneNumber.dart';
 
 class phoneNoButton extends StatefulWidget {
   const phoneNoButton({super.key});
@@ -12,7 +13,11 @@ class _phoneNoButtonState extends State<phoneNoButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        // Add functionality for button 2
+        // Navigate to SecondPage when the button is pressed
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => FPPhoneNumber()),
+        );
       },
       child: Text(
         "Phone Number",

@@ -15,19 +15,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Demo',
-      home: MyHomePage(),
+      home: FPEmail(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class FPEmail extends StatefulWidget {
+  const FPEmail({super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _FPEmailState createState() => _FPEmailState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _FPEmailState extends State<FPEmail> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

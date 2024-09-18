@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/fP_verification.dart';
 
 class sendVerificationButton extends StatefulWidget {
   const sendVerificationButton({super.key});
@@ -12,7 +13,11 @@ class _sendVerificationButtonState extends State<sendVerificationButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        // Add functionality for phone number button
+        // Navigate to SecondPage when the button is pressed
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => FPVerification()),
+        );
       },
       child: Text(
         "Send Verification Code",

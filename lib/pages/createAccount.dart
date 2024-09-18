@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/login.dart';
 import 'package:flutter_application_3/widgets/createAccPage/emailBoxCA.dart';
 import 'package:flutter_application_3/widgets/createAccPage/passwordBoxCA.dart';
 import 'package:flutter_application_3/widgets/createAccPage/phoneNoBoxCA.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Demo',
-      home: CreateAccount(),
+      home: Login(),
     );
   }
 }
@@ -84,7 +85,12 @@ class _CreateAccountState extends State<CreateAccount> {
                         children: [
                           TextButton(
                             onPressed: () {
-                              // Handle log in
+                              // Navigate to SecondPage when the button is pressed
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Login()),
+                              );
                             },
                             child: const Text(
                               'Already have an account? Log in!',

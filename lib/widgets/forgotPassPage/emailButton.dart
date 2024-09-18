@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/fP_email.dart';
 
 class emailButton extends StatefulWidget {
   const emailButton({super.key});
@@ -12,7 +13,11 @@ class _emailButtonState extends State<emailButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        // Add functionality for button 1
+        // Navigate to SecondPage when the button is pressed
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => FPEmail()),
+        );
       },
       child: const Text(
         "Email",

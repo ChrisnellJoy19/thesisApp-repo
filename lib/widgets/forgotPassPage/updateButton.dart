@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/fP_updated.dart';
 
 class updateButton extends StatefulWidget {
   const updateButton({super.key});
@@ -12,7 +13,11 @@ class _updateButtonState extends State<updateButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        // Add functionality for phone number button
+        // Navigate to SecondPage when the button is pressed
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Updated()),
+        );
       },
       child: Text(
         "Update",
