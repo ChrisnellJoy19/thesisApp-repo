@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/transactionHistory.dart';
 
 class numberOfTransactions extends StatefulWidget {
   const numberOfTransactions({super.key});
@@ -15,7 +16,11 @@ class _numberOfTransactionsState extends State<numberOfTransactions> {
         children: [
           ElevatedButton(
             onPressed: () {
-              // Add functionality for number of transaction
+              // Navigate to SecondPage when the button is pressed
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => transactionHistory()),
+              );
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromRGBO(103, 12, 13, 1.000),

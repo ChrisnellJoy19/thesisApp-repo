@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/widgets/kioskMonitoringDrawer/wholeDrawer.dart';
 import 'package:flutter_application_3/widgets/compartments/compartment1.dart';
-import 'package:flutter_application_3/widgets/compartments/compartment10.dart';
 import 'package:flutter_application_3/widgets/compartments/compartment2.dart';
 import 'package:flutter_application_3/widgets/compartments/compartment3.dart';
 import 'package:flutter_application_3/widgets/compartments/compartment4.dart';
@@ -9,7 +8,7 @@ import 'package:flutter_application_3/widgets/compartments/compartment5.dart';
 import 'package:flutter_application_3/widgets/compartments/compartment6.dart';
 import 'package:flutter_application_3/widgets/compartments/compartment7.dart';
 import 'package:flutter_application_3/widgets/compartments/compartment8.dart';
-import 'package:flutter_application_3/widgets/compartments/compartmnet9.dart';
+import 'package:flutter_application_3/widgets/compartments/compartment9.dart';
 import 'package:flutter_application_3/widgets/compartments/mscCompartment.dart';
 
 void main() {
@@ -23,19 +22,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Demo',
-      home: MyHomePage(),
+      home: LAFcompAvailability(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class LAFcompAvailability extends StatefulWidget {
+  const LAFcompAvailability({super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _LAFcompAvailabilityState createState() => _LAFcompAvailabilityState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LAFcompAvailabilityState extends State<LAFcompAvailability> {
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -138,42 +137,46 @@ class _MyHomePageState extends State<MyHomePage> {
 
                       const SizedBox(
                           height: 15), // Space between text and buttons
-
                       const Align(
                         alignment: Alignment(-2, -0.5), // Adjust alignment here
                         child: Row(
                           children: [
                             Compartment1(),
-                            SizedBox(width: 8.3),
-                            Compartment2(),
-                            SizedBox(width: 8.3),
-                            Compartment3(),
-                            SizedBox(width: 8.3),
-                            Compartment4()
+                            SizedBox(width: 7),
+                            Compartment2()
                           ],
                         ),
                       ),
+                      const SizedBox(height: 4, width: 7),
                       const Row(
                         children: [
+                          Compartment3(),
+                          SizedBox(width: 7),
+                          Compartment4(),
+                          SizedBox(width: 7),
                           Msccompartment(),
-                          SizedBox(width: 8.3),
+                        ],
+                      ),
+                      const SizedBox(height: 4, width: 7),
+                      const Row(
+                        children: [
                           Compartment5(),
-                          SizedBox(width: 8.3),
+                          SizedBox(width: 7),
                           Compartment6(),
+                        ],
+                      ),
+                      const SizedBox(height: 4, width: 7),
+                      const Row(
+                        children: [
+                          Compartment7(),
+                          SizedBox(width: 7),
+                          Compartment8(),
                         ],
                       ),
                       const SizedBox(height: 4, width: 70),
                       const Row(
                         children: [
-                          Compartment7(),
-                          SizedBox(width: 8.3),
-                          Column(
-                            children: [
-                              Compartment8(),
-                              Compartment9(),
-                              Compartment10(),
-                            ],
-                          )
+                          Compartment9(),
                         ],
                       ),
                     ],

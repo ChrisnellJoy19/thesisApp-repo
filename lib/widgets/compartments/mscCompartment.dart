@@ -19,7 +19,7 @@ class _MsccompartmentState extends State<Msccompartment> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        minimumSize: const Size(148.3, 80), // Fixed size for the button
+        minimumSize: const Size(149, 80), // Fixed size for the button
       ),
       child: const Text(
         "MSC",

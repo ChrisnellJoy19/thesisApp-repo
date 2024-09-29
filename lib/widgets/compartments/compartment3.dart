@@ -19,7 +19,7 @@ class _Compartment3State extends State<Compartment3> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        minimumSize: const Size(70, 40), // Fixed size for the button
+        minimumSize: const Size(71, 80), // Fixed size for the button
       ),
       child: const Text(
         "3",

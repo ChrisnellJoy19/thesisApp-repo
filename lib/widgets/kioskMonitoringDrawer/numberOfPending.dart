@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/transactionHistory.dart';
 
 class numberOfPending extends StatefulWidget {
   const numberOfPending({super.key});
@@ -15,7 +16,11 @@ class _numberOfPendingState extends State<numberOfPending> {
         children: [
           ElevatedButton(
             onPressed: () {
-              // Add functionality for number of pending transactions
+              // Navigate to SecondPage when the button is pressed
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => transactionHistory()),
+              );
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromRGBO(103, 12, 13, 1.000),

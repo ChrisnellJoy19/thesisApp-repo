@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Compartment10 extends StatefulWidget {
-  const Compartment10({super.key});
+class Compartment9 extends StatefulWidget {
+  const Compartment9({super.key});
 
   @override
-  State<Compartment10> createState() => _Compartment10State();
+  State<Compartment9> createState() => _Compartment9State();
 }
 
-class _Compartment10State extends State<Compartment10> {
+class _Compartment9State extends State<Compartment9> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -19,10 +19,10 @@ class _Compartment10State extends State<Compartment10> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        minimumSize: const Size(148.3, 62.5), // Fixed size for the button
+        minimumSize: const Size(305, 70), // Fixed size for the button
       ),
       child: const Text(
-        "10",
+        "9",
         style: TextStyle(
           fontFamily: "Inter",
           fontSize: 20,

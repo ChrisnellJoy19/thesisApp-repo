@@ -17,19 +17,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Demo',
-      home: MyHomePage(),
+      home: settings(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class settings extends StatefulWidget {
+  const settings({super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _settingsState createState() => _settingsState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _settingsState extends State<settings> {
   final ScrollController _scrollController = ScrollController();
   TimeOfDay selectedTime = TimeOfDay.now();
   bool isSwitched = false;

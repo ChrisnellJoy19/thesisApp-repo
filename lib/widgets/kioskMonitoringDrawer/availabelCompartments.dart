@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/compartmentAvailability.dart';
 
 class availableCompartments extends StatefulWidget {
   const availableCompartments({super.key});
@@ -15,7 +16,12 @@ class _availableCompartmentsState extends State<availableCompartments> {
         children: [
           ElevatedButton(
             onPressed: () {
-              // Add functionality for number of pending transaction
+              // Navigate to SecondPage when the button is pressed
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => compartmentAvailability()),
+              );
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color.fromRGBO(103, 12, 13, 1.000),
@@ -40,7 +46,7 @@ class _availableCompartmentsState extends State<availableCompartments> {
                 // Number of pending transaction
               },
               child: const Text(
-                'Number of Pending Transaction',
+                'Available Compartments',
                 style: TextStyle(
                   fontFamily: "Inter",
                   color: Colors.black,

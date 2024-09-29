@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/CAmark.dart';
+import 'package:flutter_application_3/pages/LAFcompMark.dart';
+import 'package:flutter_application_3/pages/dashboard.dart';
+import 'package:flutter_application_3/pages/login.dart';
+import 'package:flutter_application_3/pages/settings.dart';
+import 'package:flutter_application_3/pages/transactionHistory.dart';
 
 class wholeDrawer extends StatefulWidget {
   const wholeDrawer({super.key});
@@ -37,7 +43,11 @@ class _wholeDrawerState extends State<wholeDrawer> {
                       title: const Text('Home',
                           style: TextStyle(color: Colors.white)),
                       onTap: () {
-                        // Add functionality here
+                        // Navigate to SecondPage when the button is pressed
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Dashboard()),
+                        );
                       },
                     ),
                     ListTile(
@@ -45,7 +55,12 @@ class _wholeDrawerState extends State<wholeDrawer> {
                       title: const Text('Lost & Found',
                           style: TextStyle(color: Colors.white)),
                       onTap: () {
-                        // Add functionality here
+                        // Navigate to SecondPage when the button is pressed
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LAFcompMark()),
+                        );
                       },
                     ),
                     ListTile(
@@ -53,7 +68,11 @@ class _wholeDrawerState extends State<wholeDrawer> {
                       title: const Text('Compartment availability',
                           style: TextStyle(color: Colors.white)),
                       onTap: () {
-                        // Add functionality here
+                        // Navigate to SecondPage when the button is pressed
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CAmark()),
+                        );
                       },
                     ),
                     ListTile(
@@ -61,7 +80,12 @@ class _wholeDrawerState extends State<wholeDrawer> {
                       title: const Text('Transaction History',
                           style: TextStyle(color: Colors.white)),
                       onTap: () {
-                        // Add functionality here
+                        // Navigate to SecondPage when the button is pressed
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => transactionHistory()),
+                        );
                       },
                     ),
                     ListTile(
@@ -69,7 +93,11 @@ class _wholeDrawerState extends State<wholeDrawer> {
                       title: const Text('Settings',
                           style: TextStyle(color: Colors.white)),
                       onTap: () {
-                        // Add functionality here
+                        // Navigate to SecondPage when the button is pressed
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => settings()),
+                        );
                       },
                     ),
                     ListTile(
@@ -89,7 +117,11 @@ class _wholeDrawerState extends State<wholeDrawer> {
                 title: const Text('LOGOUT',
                     style: TextStyle(color: Colors.white, fontSize: 20)),
                 onTap: () {
-                  // Add functionality here
+                  // Navigate to SecondPage when the button is pressed
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Login()),
+                  );
                 },
               ),
             ],

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/widgets/compartments/compartment1.dart';
-import 'package:flutter_application_3/widgets/compartments/compartment10.dart';
 import 'package:flutter_application_3/widgets/compartments/compartment2.dart';
 import 'package:flutter_application_3/widgets/compartments/compartment3.dart';
 import 'package:flutter_application_3/widgets/compartments/compartment4.dart';
@@ -8,7 +7,7 @@ import 'package:flutter_application_3/widgets/compartments/compartment5.dart';
 import 'package:flutter_application_3/widgets/compartments/compartment6.dart';
 import 'package:flutter_application_3/widgets/compartments/compartment7.dart';
 import 'package:flutter_application_3/widgets/compartments/compartment8.dart';
-import 'package:flutter_application_3/widgets/compartments/compartmnet9.dart';
+import 'package:flutter_application_3/widgets/compartments/compartment9.dart';
 import 'package:flutter_application_3/widgets/compartments/mscCompartment.dart';
 import 'package:flutter_application_3/widgets/kioskMonitoringDrawer/menuButton.dart';
 import 'package:flutter_application_3/widgets/kioskMonitoringDrawer/wholeDrawer.dart';
@@ -25,19 +24,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Demo',
-      home: MyHomePage(),
+      home: compartmentAvailability(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class compartmentAvailability extends StatefulWidget {
+  const compartmentAvailability({super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _compartmentAvailabilityState createState() =>
+      _compartmentAvailabilityState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _compartmentAvailabilityState extends State<compartmentAvailability> {
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -130,36 +130,41 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Row(
                           children: [
                             Compartment1(),
-                            SizedBox(width: 8.3),
-                            Compartment2(),
-                            SizedBox(width: 8.3),
-                            Compartment3(),
-                            SizedBox(width: 8.3),
-                            Compartment4()
+                            SizedBox(width: 7),
+                            Compartment2()
                           ],
                         ),
                       ),
+                      const SizedBox(height: 4, width: 7),
                       const Row(
                         children: [
+                          Compartment3(),
+                          SizedBox(width: 7),
+                          Compartment4(),
+                          SizedBox(width: 7),
                           Msccompartment(),
-                          SizedBox(width: 8.3),
+                        ],
+                      ),
+                      const SizedBox(height: 4, width: 7),
+                      const Row(
+                        children: [
                           Compartment5(),
-                          SizedBox(width: 8.3),
+                          SizedBox(width: 7),
                           Compartment6(),
+                        ],
+                      ),
+                      const SizedBox(height: 4, width: 7),
+                      const Row(
+                        children: [
+                          Compartment7(),
+                          SizedBox(width: 7),
+                          Compartment8(),
                         ],
                       ),
                       const SizedBox(height: 4, width: 70),
                       const Row(
                         children: [
-                          Compartment7(),
-                          SizedBox(width: 8.3),
-                          Column(
-                            children: [
-                              Compartment8(),
-                              Compartment9(),
-                              Compartment10(),
-                            ],
-                          )
+                          Compartment9(),
                         ],
                       ),
                     ],

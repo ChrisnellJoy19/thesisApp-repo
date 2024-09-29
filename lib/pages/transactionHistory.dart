@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/widgets/kioskMonitoringDrawer/menuButton.dart';
+import 'package:flutter_application_3/widgets/kioskMonitoringDrawer/wholeDrawer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,19 +13,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Demo',
-      home: MyHomePage(),
+      home: transactionHistory(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class transactionHistory extends StatefulWidget {
+  const transactionHistory({super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _transactionHistoryState createState() => _transactionHistoryState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _transactionHistoryState extends State<transactionHistory> {
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -31,91 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       drawer: SizedBox(
         width: MediaQuery.of(context).size.width * 0.7,
-        child: Drawer(
-          child: Container(
-            color: const Color.fromRGBO(103, 12, 13, 1.000),
-            child: Column(
-              children: <Widget>[
-                const SizedBox(height: 60),
-                const Text(
-                  'Kiosk Monitoring',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Expanded(
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    children: [
-                      ListTile(
-                        leading: const Icon(Icons.home, color: Colors.white),
-                        title: const Text('Home',
-                            style: TextStyle(color: Colors.white)),
-                        onTap: () {
-                          // Add functionality here
-                        },
-                      ),
-                      ListTile(
-                        leading: const Icon(Icons.search, color: Colors.white),
-                        title: const Text('Lost & Found',
-                            style: TextStyle(color: Colors.white)),
-                        onTap: () {
-                          // Add functionality here
-                        },
-                      ),
-                      ListTile(
-                        leading: const Icon(Icons.storage, color: Colors.white),
-                        title: const Text('Compartment availability',
-                            style: TextStyle(color: Colors.white)),
-                        onTap: () {
-                          // Add functionality here
-                        },
-                      ),
-                      ListTile(
-                        leading: const Icon(Icons.history, color: Colors.white),
-                        title: const Text('Transaction History',
-                            style: TextStyle(color: Colors.white)),
-                        onTap: () {
-                          // Add functionality here
-                        },
-                      ),
-                      ListTile(
-                        leading:
-                            const Icon(Icons.settings, color: Colors.white),
-                        title: const Text('Settings',
-                            style: TextStyle(color: Colors.white)),
-                        onTap: () {
-                          // Add functionality here
-                        },
-                      ),
-                      ListTile(
-                        leading:
-                            const Icon(Icons.videocam, color: Colors.white),
-                        title: const Text('CCTV Videos',
-                            style: TextStyle(color: Colors.white)),
-                        onTap: () {
-                          // Add functionality here
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-                ListTile(
-                  leading:
-                      const Icon(Icons.logout, color: Colors.white, size: 30.0),
-                  title: const Text('LOGOUT',
-                      style: TextStyle(color: Colors.white, fontSize: 20)),
-                  onTap: () {
-                    // Add functionality here
-                  },
-                ),
-              ],
-            ),
-          ),
-        ),
+        child: wholeDrawer(),
       ),
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -126,22 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 50,
               color: const Color.fromRGBO(103, 12, 13, 1.000),
             ),
-            Positioned(
-              top: 1,
-              right: 8,
-              child: Builder(
-                builder: (context) {
-                  return IconButton(
-                    icon: const Icon(Icons.menu),
-                    iconSize: 30.0,
-                    onPressed: () {
-                      Scaffold.of(context).openDrawer();
-                    },
-                    color: Colors.white,
-                  );
-                },
-              ),
-            ),
+            const menuButton(),
             Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
