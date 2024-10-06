@@ -1,35 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/widgets/kioskMonitoringDrawer/wholeDrawer.dart';
-import 'package:flutter_application_3/widgets/loginPage/backButton.dart';
-import 'package:flutter_application_3/widgets/settingsPage/lockerKioskSystemText.dart';
-import 'package:flutter_application_3/widgets/settingsPage/onAndOff.dart';
-import 'package:flutter_application_3/widgets/settingsPage/reminderText.dart';
-import 'package:flutter_application_3/widgets/settingsPage/setTime.dart';
+import 'package:flutter_application_3/widgets/drawer.dart';
+import 'package:flutter_application_3/widgets/drawer_button.dart';
+import 'package:flutter_application_3/widgets/power_toggle.dart';
+import 'package:flutter_application_3/widgets/timepicker.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Settings extends StatefulWidget {
+  const Settings({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Flutter Demo',
-      home: settings(),
-    );
-  }
+  State<Settings> createState() => _SettingsState();
 }
 
-class settings extends StatefulWidget {
-  const settings({super.key});
-
-  @override
-  _settingsState createState() => _settingsState();
-}
-
-class _settingsState extends State<settings> {
+class _SettingsState extends State<Settings> {
   final ScrollController _scrollController = ScrollController();
   TimeOfDay selectedTime = TimeOfDay.now();
   bool isSwitched = false;
@@ -37,7 +19,7 @@ class _settingsState extends State<settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const wholeDrawer(),
+      drawer: const AppDrawer(),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(
@@ -47,31 +29,21 @@ class _settingsState extends State<settings> {
               height: 50,
               color: const Color.fromRGBO(103, 12, 13, 1.000),
             ),
-            Positioned(
-              top: 1,
-              right: 8,
-              child: Builder(
-                builder: (context) {
-                  return const backButton();
-                },
-              ),
-            ),
+            const AppDrawerButton(),
             Container(
               height: 600,
               width: 400,
               margin: const EdgeInsets.only(
-                  top: 90.0,
-                  left: 50.0,
-                  right: 50.0,
-                  bottom: 50.0), // Margin to make the border visible
-              padding: const EdgeInsets.only(
-                  top:
-                      10), // Padding to start the border below the top container
+                top: 90.0,
+                left: 50.0,
+                right: 50.0,
+                bottom: 50.0,
+              ),
+              padding: const EdgeInsets.only(top: 10),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color:
-                      const Color.fromRGBO(103, 12, 13, 1.000), // Border color
-                  width: 2.0, // Border width
+                  color: const Color.fromRGBO(103, 12, 13, 1.000),
+                  width: 2.0,
                 ),
               ),
               child: SingleChildScrollView(
@@ -79,7 +51,7 @@ class _settingsState extends State<settings> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 1.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(top: 0.0),
@@ -90,27 +62,45 @@ class _settingsState extends State<settings> {
                           },
                         ),
                       ),
-
                       const SizedBox(height: 20),
-                      const reminderText(),
-                      const SizedBox(
-                          height: 3), // Space between text and time picker
-                      const Center(
-                        child: Column(
-                          children: [
-                            setTime(),
-                            SizedBox(
-                                height: 100), // Space between button and switch
-                            lockerKioskSystemText(),
-                            SizedBox(
-                                height: 6), // Space between text and switch
-                            onAndOff(),
-                          ],
+                      const Text(
+                        "REMIND TIME",
+                        style: TextStyle(
+                          fontFamily: "Inter",
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic,
+                          fontSize: 24,
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
-                      const SizedBox(
-                          height:
-                              20), // Space between switch and additional content
+                      const SizedBox(height: 3),
+                      Column(
+                        children: [
+                          const Timepicker(),
+                          const SizedBox(height: 100),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 20),
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 255, 255, 255),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: const Text(
+                              'LOCKER KIOSK SYSTEM',
+                              style: TextStyle(
+                                fontFamily: "Inter",
+                                fontStyle: FontStyle.italic,
+                                fontSize: 24,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 6),
+                          const PowerToggle(),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
