@@ -31,14 +31,8 @@ class _LockerCardState extends State<LockerCard> {
 
   @override
   void initState() {
+    cardColor = _getColorForStatus(widget.status);
     super.initState();
-    if (widget.status != LockerStatus.available &&
-        widget.status != LockerStatus.unavailable &&
-        widget.status != LockerStatus.maintenance) {
-      cardColor = Colors.grey;
-    } else {
-      cardColor = _getColorForStatus(widget.status);
-    }
   }
 
   Color _getColorForStatus(String status) {

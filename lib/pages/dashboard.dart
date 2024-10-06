@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_3/widgets/drawer.dart';
 import 'package:flutter_application_3/widgets/drawer_button.dart';
 import 'package:flutter_application_3/widgets/dashboard_card.dart';
@@ -15,6 +16,42 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   final ScrollController _scrollController = ScrollController();
+  FirebaseFirestore db = FirebaseFirestore.instance;
+  int transactions = 0;
+  int pendingTransactions = 0;
+  int availableCompartments = 0;
+
+  @override
+  void initState() {
+    final transactionsRef = db.collection("transactions");
+    transactionsRef.get().then(
+      (querySnapshot) {
+        setState(() {
+          transactions = querySnapshot.docs.length;
+          for (var docSnapshot in querySnapshot.docs) {
+            if (docSnapshot.data()["received_at"] == null) {
+              pendingTransactions += 1;
+            }
+          }
+        });
+      },
+      onError: (e) => print("Error getting document: $e"),
+    );
+    final compartmentsRef = db.collection("compartments");
+    compartmentsRef.get().then(
+      (querySnapshot) {
+        setState(() {
+          for (var docSnapshot in querySnapshot.docs) {
+            if (docSnapshot.data()["status"] == "available") {
+              availableCompartments += 1;
+            }
+          }
+        });
+      },
+      onError: (e) => print("Error getting document: $e"),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +117,7 @@ class _DashboardState extends State<Dashboard> {
                             ),
                             const SizedBox(height: 20),
                             DashboardCard(
-                              value: "6",
+                              value: transactions.toString(),
                               label: "Number of Transactions",
                               onPressed: () {
                                 Navigator.pushReplacement(
@@ -93,7 +130,7 @@ class _DashboardState extends State<Dashboard> {
                             ),
                             const SizedBox(height: 10),
                             DashboardCard(
-                              value: "9",
+                              value: pendingTransactions.toString(),
                               label: "Number of Pending Transactions",
                               onPressed: () {
                                 Navigator.pushReplacement(
@@ -106,7 +143,7 @@ class _DashboardState extends State<Dashboard> {
                             ),
                             const SizedBox(height: 10),
                             DashboardCard(
-                              value: "6",
+                              value: availableCompartments.toString(),
                               label: "Available",
                               onPressed: () {
                                 Navigator.pushReplacement(
