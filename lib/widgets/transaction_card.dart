@@ -103,6 +103,8 @@ class _TransactionCardState extends State<TransactionCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 if (widget.transactionType == "regular") ...[
+                  buildDetailRow(
+                      'Type:', cleanTransactionType(widget.transactionType)),
                   buildDetailRow('Item Category:', widget.itemCategory),
                   buildDetailRow('Status:', status),
                   buildDetailRow('Sender:', widget.sender),
@@ -127,6 +129,8 @@ class _TransactionCardState extends State<TransactionCard> {
                         DateFormat('MMMM dd, yyyy hh:mm a')
                             .format(widget.receivedDate!)),
                 ] else if (widget.transactionType == "lost_and_found") ...[
+                  buildDetailRow(
+                      'Type:', cleanTransactionType(widget.transactionType)),
                   buildDetailRow('Item Category:', widget.itemCategory),
                   if (widget.itemSubCategory != null)
                     buildDetailRow('Sub-category:', widget.itemSubCategory!),
@@ -171,6 +175,17 @@ class _TransactionCardState extends State<TransactionCard> {
         );
       },
     );
+  }
+
+  String cleanTransactionType(String transactionType) {
+    switch (transactionType) {
+      case "regular":
+        return "Regular";
+      case "lost_and_found":
+        return "Lost and Found";
+      default:
+        return "Unknown";
+    }
   }
 
   Widget buildDetailRow(String label, String value) {
