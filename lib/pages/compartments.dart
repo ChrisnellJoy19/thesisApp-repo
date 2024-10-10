@@ -135,6 +135,13 @@ class _CompartmentsState extends State<Compartments> {
                             const SizedBox(height: 4, width: 7),
                             Row(
                               children: [
+                                const LockerCard(
+                                  width: 149,
+                                  height: 80,
+                                  text: "MarSU",
+                                  status: "default",
+                                ),
+                                const SizedBox(width: 7),
                                 LockerCard(
                                   width: 71,
                                   height: 80,
@@ -147,13 +154,6 @@ class _CompartmentsState extends State<Compartments> {
                                   height: 80,
                                   text: "4",
                                   status: compartmentStatuses["4"] ?? "",
-                                ),
-                                const SizedBox(width: 7),
-                                const LockerCard(
-                                  width: 149,
-                                  height: 80,
-                                  text: "MSC",
-                                  status: "available",
                                 ),
                               ],
                             ),
