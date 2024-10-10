@@ -96,14 +96,6 @@ class _AppDrawerState extends State<AppDrawer> {
                         );
                       },
                     ),
-                    ListTile(
-                      leading: const Icon(Icons.videocam, color: Colors.white),
-                      title: const Text(
-                        'CCTV Videos',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      onTap: () {},
-                    ),
                   ],
                 ),
               ),
