@@ -15,7 +15,7 @@ class Transactions extends StatefulWidget {
 class _TransactionsState extends State<Transactions> {
   final ScrollController _scrollController = ScrollController();
   FirebaseFirestore db = FirebaseFirestore.instance;
-  bool isLoading = false;
+  bool isLoading = true;
   List<Map<String, dynamic>> transactions = [];
   List<Map<String, dynamic>> filteredTransactions = [];
 
@@ -38,11 +38,14 @@ class _TransactionsState extends State<Transactions> {
       (querySnapshot) {
         setState(() {
           transactions = querySnapshot.docs
-              .map((docSnapshot) => docSnapshot.data() as Map<String, dynamic>)
+              .map((docSnapshot) => docSnapshot.data())
               .toList();
           filteredTransactions = transactions;
         });
-        isLoading = false;
+        setState(() {
+          isLoading = false;
+        });
+        print(filteredTransactions);
       },
       onError: (e) => print("Error getting document: $e"),
     );
@@ -115,18 +118,16 @@ class _TransactionsState extends State<Transactions> {
 
   @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? const Center(
-            child: CircularProgressIndicator(),
-          )
-        : Scaffold(
-            drawer: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.7,
-              child: const AppDrawer(),
-            ),
-            backgroundColor: Colors.white,
-            body: SafeArea(
-              child: Stack(
+    return Scaffold(
+      drawer: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.7,
+        child: const AppDrawer(),
+      ),
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: isLoading
+            ? Center(child: CircularProgressIndicator())
+            : Stack(
                 children: [
                   Container(
                     width: double.infinity,
@@ -239,20 +240,29 @@ class _TransactionsState extends State<Transactions> {
                                 filteredTransactions.length,
                                 (index) => TransactionCard(
                                   transactionType: filteredTransactions[index]
-                                      ["transaction_type"],
+                                          ["transaction_type"] ??
+                                      "",
                                   itemCategory: filteredTransactions[index]
-                                      ["item_category"],
+                                          ["item_category"] ??
+                                      "",
                                   itemSubCategory: filteredTransactions[index]
-                                      ["item_subcategory"],
+                                          ["item_subcategory"] ??
+                                      "",
                                   itemDetail: filteredTransactions[index]
-                                      ["item_detail"],
-                                  sender: filteredTransactions[index]["sender"],
+                                          ["item_detail"] ??
+                                      "",
+                                  sender: filteredTransactions[index]
+                                          ["sender"] ??
+                                      "",
                                   senderContact: filteredTransactions[index]
-                                      ["sender_contact"],
+                                          ["sender_contact"] ??
+                                      "",
                                   receiver: filteredTransactions[index]
-                                      ["receiver"],
+                                          ["receiver"] ??
+                                      "",
                                   receiverContact: filteredTransactions[index]
-                                      ["receiver_contact"],
+                                          ["receiver_contact"] ??
+                                      "",
                                   dropoffDate: filteredTransactions[index]
                                           ["dropoff_at"]
                                       .toDate(),
@@ -269,7 +279,7 @@ class _TransactionsState extends State<Transactions> {
                   ),
                 ],
               ),
-            ),
-          );
+      ),
+    );
   }
 }
