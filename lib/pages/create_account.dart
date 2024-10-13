@@ -59,27 +59,6 @@ class _CreateAccountState extends State<CreateAccount> {
                     ),
                     const SizedBox(height: 20),
                     const Text(
-                      "Phone Number",
-                      style: TextStyle(
-                        fontFamily: "Inter",
-                        fontSize: 16,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const SizedBox(height: 1),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.symmetric(
-                          vertical: 4.0,
-                          horizontal: 10.0,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
                       "Email Address",
                       style: TextStyle(
                         fontFamily: "Inter",
@@ -170,7 +149,7 @@ class _CreateAccountState extends State<CreateAccount> {
                         _validatePasswords();
                       },
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 50),
                     Center(
                       child: ElevatedButton(
                         onPressed: () {

@@ -51,10 +51,10 @@ class _SettingsState extends State<Settings> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 1.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 0.0),
+                      Align(
+                        alignment: Alignment.centerLeft,
                         child: IconButton(
                           icon: const Icon(Icons.arrow_back),
                           onPressed: () {
