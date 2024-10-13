@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_application_3/pages/dashboard.dart';
 import 'package:flutter_application_3/pages/create_account.dart';
 import 'package:flutter_application_3/pages/forgot_password.dart';
@@ -11,6 +13,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  FirebaseFirestore db = FirebaseFirestore.instance;
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -19,16 +22,6 @@ class _LoginState extends State<Login> {
   void dispose() {
     _usernameController.dispose();
     super.dispose();
-  }
-
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            content: Text(
-                'Username: ${_usernameController.text} Password: ${_passwordController.text}')),
-      );
-    }
   }
 
   @override
@@ -92,14 +85,7 @@ class _LoginState extends State<Login> {
                       ),
                       const SizedBox(height: 16),
                       ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Dashboard(),
-                            ),
-                          );
-                        },
+                        onPressed: _handleLogin,
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
                               const Color.fromRGBO(103, 12, 13, 1.000),
@@ -159,6 +145,86 @@ class _LoginState extends State<Login> {
           ),
         ),
       ),
+    );
+  }
+
+  Future<void> _handleLogin() async {
+    String username = _usernameController.text.trim();
+    String password = _passwordController.text.trim();
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return const AlertDialog(
+          title: Text('Checking...'),
+          content: SizedBox(
+            height: 60,
+            child: Row(
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(width: 20),
+                Expanded(child: Text('Checking user existence...')),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+
+    bool success = false;
+    final CollectionReference users =
+        FirebaseFirestore.instance.collection("users");
+    QuerySnapshot userQuerySnapshot =
+        await users.where("username", isEqualTo: username).limit(1).get();
+    if (userQuerySnapshot.docs.isNotEmpty) {
+      Map<String, dynamic> userdata =
+          userQuerySnapshot.docs[0].data() as Map<String, dynamic>;
+
+      try {
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: userdata["email"], password: password);
+        success = true;
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          print('No user found for that email.');
+        } else if (e.code == 'wrong-password') {
+          print('Wrong password provided for that user.');
+        }
+        success = false;
+      } catch (e) {
+        success = true;
+      }
+    }
+
+    Navigator.of(context).pop();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: success
+              ? const Text('Login Success')
+              : const Text('Login Failed'),
+          content: success
+              ? const Text('Login successfully')
+              : const Text('Username and password not found'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                if (success) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Dashboard()),
+                  );
+                }
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
