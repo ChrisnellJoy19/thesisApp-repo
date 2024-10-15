@@ -135,11 +135,23 @@ class _CompartmentsState extends State<Compartments> {
                             const SizedBox(height: 4, width: 7),
                             Row(
                               children: [
-                                const LockerCard(
+                                Container(
                                   width: 149,
                                   height: 80,
-                                  text: "MarSU",
-                                  status: "default",
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      "MarSU",
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                                 const SizedBox(width: 7),
                                 LockerCard(

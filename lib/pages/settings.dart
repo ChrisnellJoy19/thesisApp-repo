@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/pages/dashboard.dart';
 import 'package:flutter_application_3/widgets/drawer.dart';
 import 'package:flutter_application_3/widgets/drawer_button.dart';
 import 'package:flutter_application_3/widgets/power_toggle.dart';
@@ -51,14 +52,17 @@ class _SettingsState extends State<Settings> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 1.0),
                   child: Column(
-                    // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Align(
                         alignment: Alignment.centerLeft,
                         child: IconButton(
                           icon: const Icon(Icons.arrow_back),
                           onPressed: () {
-                            Navigator.pop(context);
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Dashboard()),
+                            );
                           },
                         ),
                       ),
