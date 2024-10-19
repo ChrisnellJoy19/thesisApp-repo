@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_3/pages/dashboard.dart';
 import 'package:flutter_application_3/widgets/drawer.dart';
 import 'package:flutter_application_3/widgets/drawer_button.dart';
-import 'package:flutter_application_3/widgets/power_toggle.dart';
+// import 'package:flutter_application_3/widgets/power_toggle.dart';
 import 'package:flutter_application_3/widgets/timepicker.dart';
 
 class Settings extends StatefulWidget {
@@ -89,19 +89,7 @@ class _SettingsState extends State<Settings> {
                               color: const Color.fromARGB(255, 255, 255, 255),
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: const Text(
-                              'LOCKER KIOSK SYSTEM',
-                              style: TextStyle(
-                                fontFamily: "Inter",
-                                fontStyle: FontStyle.italic,
-                                fontSize: 24,
-                                color: Color.fromARGB(255, 0, 0, 0),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
                           ),
-                          const SizedBox(height: 6),
-                          const PowerToggle(),
                         ],
                       ),
                       const SizedBox(height: 20),
