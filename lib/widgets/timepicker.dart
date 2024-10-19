@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Timepicker extends StatefulWidget {
   const Timepicker({super.key});
@@ -8,6 +9,7 @@ class Timepicker extends StatefulWidget {
 }
 
 class _TimepickerState extends State<Timepicker> {
+  FirebaseFirestore db = FirebaseFirestore.instance;
   TimeOfDay selectedTime = TimeOfDay.now();
   bool isSwitched = false;
 
@@ -20,6 +22,9 @@ class _TimepickerState extends State<Timepicker> {
       setState(() {
         selectedTime = picked;
       });
+      db.collection("settings").doc("current").set(
+          {"reminder_time": selectedTime.format(context)},
+          SetOptions(merge: true));
     }
   }
 
