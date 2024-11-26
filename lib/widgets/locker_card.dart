@@ -156,21 +156,21 @@ class _LockerCardState extends State<LockerCard> {
                       ],
                     ),
                   const SizedBox(height: 16),
-                  const Text("Change Compartment Status:"),
-                  DropdownButton<String>(
-                    value: selectedStatus,
-                    items: LockerStatus.getStatusList().map((String status) {
-                      return DropdownMenuItem<String>(
-                        value: status,
-                        child: Text(status),
-                      );
-                    }).toList(),
-                    onChanged: (newStatus) {
-                      setState(() {
-                        selectedStatus = newStatus;
-                      });
-                    },
-                  ),
+                  // const Text("Change Compartment Status:"),
+                  // DropdownButton<String>(
+                  //   value: selectedStatus,
+                  //   items: LockerStatus.getStatusList().map((String status) {
+                  //     return DropdownMenuItem<String>(
+                  //       value: status,
+                  //       child: Text(status),
+                  //     );
+                  //   }).toList(),
+                  //   onChanged: (newStatus) {
+                  //     setState(() {
+                  //       selectedStatus = newStatus;
+                  //     });
+                  //   },
+                  // ),
                 ],
               ),
               actions: [
@@ -180,19 +180,19 @@ class _LockerCardState extends State<LockerCard> {
                   },
                   child: const Text("Close"),
                 ),
-                ElevatedButton(
-                  onPressed: () async {
-                    if (selectedStatus != null) {
-                      await updateCompartmentStatus(
-                          widget.text, selectedStatus!);
-                      setState(() {
-                        cardColor = _getColorForStatus(selectedStatus!);
-                      });
-                      Navigator.of(context).pop();
-                    }
-                  },
-                  child: const Text("Save"),
-                ),
+                // ElevatedButton(
+                //   onPressed: () async {
+                //     if (selectedStatus != null) {
+                //       await updateCompartmentStatus(
+                //           widget.text, selectedStatus!);
+                //       setState(() {
+                //         cardColor = _getColorForStatus(selectedStatus!);
+                //       });
+                //       Navigator.of(context).pop();
+                //     }
+                //   },
+                //   child: const Text("Save"),
+                // ),
               ],
             );
           },

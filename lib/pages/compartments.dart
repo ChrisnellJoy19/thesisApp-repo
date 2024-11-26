@@ -92,7 +92,7 @@ class _CompartmentsState extends State<Compartments> {
                                     fontFamily: "Inter",
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FontStyle.italic,
-                                    fontSize: 18,
+                                    fontSize: 17,
                                     color: Color.fromRGBO(103, 12, 13, 1.000),
                                   ),
                                 ),
@@ -117,14 +117,16 @@ class _CompartmentsState extends State<Compartments> {
                               child: Row(
                                 children: [
                                   LockerCard(
-                                    width: 149,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.342,
                                     height: 70,
                                     text: "1",
                                     status: compartmentStatuses["1"] ?? "",
                                   ),
                                   const SizedBox(width: 7),
                                   LockerCard(
-                                    width: 149,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.342,
                                     height: 70,
                                     text: "2",
                                     status: compartmentStatuses["2"] ?? "",
@@ -136,7 +138,8 @@ class _CompartmentsState extends State<Compartments> {
                             Row(
                               children: [
                                 Container(
-                                  width: 149,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.342,
                                   height: 80,
                                   decoration: BoxDecoration(
                                     color: Colors.grey,
@@ -155,14 +158,16 @@ class _CompartmentsState extends State<Compartments> {
                                 ),
                                 const SizedBox(width: 7),
                                 LockerCard(
-                                  width: 71,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.05,
                                   height: 80,
                                   text: "3",
                                   status: compartmentStatuses["3"] ?? "",
                                 ),
                                 const SizedBox(width: 7),
                                 LockerCard(
-                                  width: 71,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.05,
                                   height: 80,
                                   text: "4",
                                   status: compartmentStatuses["4"] ?? "",
@@ -173,14 +178,16 @@ class _CompartmentsState extends State<Compartments> {
                             Row(
                               children: [
                                 LockerCard(
-                                  width: 149,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.342,
                                   height: 43,
                                   text: "5",
                                   status: compartmentStatuses["5"] ?? "",
                                 ),
                                 const SizedBox(width: 7),
                                 LockerCard(
-                                  width: 149,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.342,
                                   height: 43,
                                   text: "6",
                                   status: compartmentStatuses["6"] ?? "",
@@ -191,14 +198,16 @@ class _CompartmentsState extends State<Compartments> {
                             Row(
                               children: [
                                 LockerCard(
-                                  width: 149,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.342,
                                   height: 70,
                                   text: "7",
                                   status: compartmentStatuses["7"] ?? "",
                                 ),
                                 const SizedBox(width: 7),
                                 LockerCard(
-                                  width: 149,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.342,
                                   height: 70,
                                   text: "8",
                                   status: compartmentStatuses["8"] ?? "",
@@ -209,7 +218,8 @@ class _CompartmentsState extends State<Compartments> {
                             Row(
                               children: [
                                 LockerCard(
-                                  width: 305,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.70,
                                   height: 70,
                                   text: "9",
                                   status: compartmentStatuses["9"] ?? "",
