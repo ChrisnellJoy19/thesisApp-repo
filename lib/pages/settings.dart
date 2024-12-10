@@ -1,8 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/pages/dashboard.dart';
 import 'package:flutter_application_3/widgets/drawer.dart';
 import 'package:flutter_application_3/widgets/drawer_button.dart';
-// import 'package:flutter_application_3/widgets/power_toggle.dart';
 import 'package:flutter_application_3/widgets/timepicker.dart';
 
 class Settings extends StatefulWidget {
@@ -14,8 +14,69 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   final ScrollController _scrollController = ScrollController();
-  TimeOfDay selectedTime = TimeOfDay.now();
-  bool isSwitched = false;
+  String reminderTime = ''; // To store fetched reminder time
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchReminderTime(); // Fetch reminder time when the widget is initialized
+  }
+
+  Future<void> _fetchReminderTime() async {
+    try {
+      // Fetch data from Firestore collection 'settings' and document 'current'
+      var docSnapshot = await FirebaseFirestore.instance
+          .collection('settings') // Correct collection name
+          .doc('current') // 'current' document
+          .get();
+
+      print("Fetching document...");
+
+      // Check if the document exists
+      if (docSnapshot.exists) {
+        print("Document Found: ${docSnapshot.id}");
+
+        // Fetch reminder_time field
+        var fetchedReminderTime = docSnapshot.data()?['reminder_time'];
+        print("Fetched reminder_time: $fetchedReminderTime");
+
+        if (fetchedReminderTime != null) {
+          if (fetchedReminderTime is Timestamp) {
+            // Convert Timestamp to DateTime and then to String
+            setState(() {
+              reminderTime = fetchedReminderTime.toDate().toString();
+            });
+            print("Reminder time is a Timestamp: $reminderTime");
+          } else if (fetchedReminderTime is String) {
+            setState(() {
+              reminderTime = fetchedReminderTime;
+            });
+            print("Reminder time is a String: $reminderTime");
+          } else {
+            print("Unexpected format for reminder_time");
+            setState(() {
+              reminderTime = 'Unexpected format for reminder_time';
+            });
+          }
+        } else {
+          print("No reminder_time field found in document");
+          setState(() {
+            reminderTime = 'No reminder time found';
+          });
+        }
+      } else {
+        print("Document not found in Firestore");
+        setState(() {
+          reminderTime = 'Document not found';
+        });
+      }
+    } catch (e) {
+      print("Error fetching reminder time: $e");
+      setState(() {
+        reminderTime = 'Error fetching data';
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,6 +142,25 @@ class _SettingsState extends State<Settings> {
                       Column(
                         children: [
                           const Timepicker(),
+                          const SizedBox(height: 70),
+                          // Display fetched reminder time below the button
+                          reminderTime.isNotEmpty
+                              ? Text(
+                                  'Reminder Time is set to $reminderTime',
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                    color: Color.fromARGB(255, 0, 0, 0),
+                                  ),
+                                )
+                              : const Text(
+                                  'No reminder time found.',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                    color: Color.fromARGB(255, 0, 0, 0),
+                                  ),
+                                ),
                           const SizedBox(height: 100),
                           Container(
                             padding: const EdgeInsets.symmetric(
