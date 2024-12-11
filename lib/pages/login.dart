@@ -18,9 +18,13 @@ class _LoginState extends State<Login> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  bool _isPasswordVisible =
+      false; // Add this state variable to control visibility
+
   @override
   void dispose() {
     _usernameController.dispose();
+    _passwordController.dispose(); // Dispose the password controller as well
     super.dispose();
   }
 
@@ -71,11 +75,26 @@ class _LoginState extends State<Login> {
                       const SizedBox(height: 16),
                       TextFormField(
                         controller: _passwordController,
-                        decoration: const InputDecoration(
+                        obscureText:
+                            !_isPasswordVisible, // Use the state variable here
+                        decoration: InputDecoration(
                           labelText: 'Password',
-                          border: OutlineInputBorder(),
+                          border: const OutlineInputBorder(),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _isPasswordVisible
+                                  ? Icons
+                                      .visibility_off // Cross icon when password is visible
+                                  : Icons
+                                      .visibility, // Eye icon when password is hidden
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _isPasswordVisible = !_isPasswordVisible;
+                              });
+                            },
+                          ),
                         ),
-                        obscureText: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your password';

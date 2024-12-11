@@ -22,9 +22,10 @@ class _TimepickerState extends State<Timepicker> {
       setState(() {
         selectedTime = picked;
       });
-      db.collection("settings").doc("current").set(
-          {"reminder_time": selectedTime.format(context)},
-          SetOptions(merge: true));
+      db.collection("settings").doc("current").update({
+        "reminder_time": selectedTime.format(context),
+        "last_reminder": DateTime.now().toIso8601String()
+      });
     }
   }
 
