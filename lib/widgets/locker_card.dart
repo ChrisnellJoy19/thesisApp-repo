@@ -127,10 +127,12 @@ class _LockerCardState extends State<LockerCard> {
                   else
                     Column(
                       children: [
-                        buildDetailRow("Transaction Type:",
-                            cleanTransactionType(transaction["item"] ?? "N/A")),
-                        buildDetailRow("Item Category:",
-                            transaction["item_category"] ?? "N/A"),
+                        buildDetailRow(
+                            "Transaction Type:",
+                            cleanTransactionType(
+                                transaction["transaction_type"] ?? "N/A")),
+                        // buildDetailRow("Item Category:",
+                        //     transaction["item_category"] ?? "N/A"),
                         buildDetailRow(
                             "Sender:", transaction["sender"] ?? "N/A"),
                         buildDetailRow("Sender Contact:",
